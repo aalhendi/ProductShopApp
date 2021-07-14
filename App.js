@@ -1,21 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NativeBaseProvider, Center, useColorModeValue } from "native-base";
+/* Components */
+import ThemeButton from "./components/ThemeButton";
+import Home from "./components/Home";
+/* State and Store */
+import { observer } from "mobx-react-lite";
+import ProducerList from "./components/Producer/ProducerList";
 
-export default function App() {
+const App = () => {
+  const LocalWrapper = ({ children }) => {
+    const bg = useColorModeValue("gray.200", "gray.800");
+    return (
+      <Center flex={1} bg={bg}>
+        {children}
+      </Center>
+    );
+  };
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeBaseProvider>
+      <LocalWrapper>
+        <ThemeButton />
+        {/* <Home /> */}
+        <ProducerList />
+      </LocalWrapper>
+    </NativeBaseProvider>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default observer(App);
