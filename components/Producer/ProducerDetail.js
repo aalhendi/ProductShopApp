@@ -1,7 +1,7 @@
 /* Imports */
 import React from "react";
-import { Spinner } from "native-base";
-import { View, Text, Image } from "react-native";
+import { Spinner, Text } from "native-base";
+import { View, Image } from "react-native";
 /* Components */
 import ProductList from "../Product/ProductList";
 /* State and Store */
@@ -31,7 +31,6 @@ const ProducerDetail = ({ navigation, route }) => {
         <Text>{producer.name}</Text>
       </View>
       <View>
-        <Text>Products</Text>
         <ProductList products={products} />
       </View>
     </>
