@@ -1,4 +1,4 @@
-//State & Store
+/* State and Store */
 import { makeAutoObservable } from "mobx";
 import instance from "./instance";
 

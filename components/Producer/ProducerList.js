@@ -1,11 +1,16 @@
+/* Imports */
 import React from "react";
-import ProducerItem from "./ProducerItem";
-import producerStore from "../../stores/producerStore";
-import { observer } from "mobx-react-lite";
+import { ScrollView } from "react-native";
 import { List, Heading, Spinner } from "native-base";
+/* Components */
+import ProducerItem from "./ProducerItem";
+/* State and Store */
+import producerStore from "../../stores/producerStore";
+import productStore from "../../stores/productStore";
+import { observer } from "mobx-react-lite";
 
-const ProducerList = () => {
-  if (producerStore.loading) {
+const ProducerList = ({ navigation }) => {
+  if (producerStore.loading || productStore.loading) {
     return (
       <>
         <Spinner />
@@ -13,15 +18,19 @@ const ProducerList = () => {
     );
   }
   const producerList = producerStore.producers.map((producer) => (
-    <ProducerItem producer={producer} key={producer.id} />
+    <ProducerItem
+      producer={producer}
+      key={producer.id}
+      navigation={navigation}
+    />
   ));
-
-  console.log(producerList);
 
   return (
     <>
-      <Heading>List</Heading>
-      <List>{producerList}</List>
+      <ScrollView>
+        <Heading>List</Heading>
+        <List>{producerList}</List>
+      </ScrollView>
     </>
   );
 };

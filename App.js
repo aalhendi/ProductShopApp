@@ -1,28 +1,37 @@
+/* Imports */
 import React from "react";
-import { NativeBaseProvider, Center, useColorModeValue } from "native-base";
-/* Components */
-import ThemeButton from "./components/ThemeButton";
-import Home from "./components/Home";
+import { NativeBaseProvider } from "native-base";
+import "react-native-gesture-handler"; //?
+import { ThemeProvider } from "styled-components";
+/* Navigation */
+import { NavigationContainer } from "@react-navigation/native";
+import RootNavigator from "./components/Navigation/index";
 /* State and Store */
 import { observer } from "mobx-react-lite";
-import ProducerList from "./components/Producer/ProducerList";
+
+const theme = {
+  light: {
+    mainColor: "#242424", // main font color
+    backgroundColor: "#fefafb", // main background color
+    pink: "#ff85a2",
+    red: "#ff3232",
+  },
+  dark: {
+    mainColor: "#fefafb", // main font color
+    backgroundColor: "#242424", // main background color
+    pink: "#ff85a2",
+    red: "#ff3232",
+  },
+};
 
 const App = () => {
-  const LocalWrapper = ({ children }) => {
-    const bg = useColorModeValue("gray.200", "gray.800");
-    return (
-      <Center flex={1} bg={bg}>
-        {children}
-      </Center>
-    );
-  };
   return (
     <NativeBaseProvider>
-      <LocalWrapper>
-        <ThemeButton />
-        {/* <Home /> */}
-        <ProducerList />
-      </LocalWrapper>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <RootNavigator />
+        </NavigationContainer>
+      </ThemeProvider>
     </NativeBaseProvider>
   );
 };

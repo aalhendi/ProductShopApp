@@ -1,16 +1,21 @@
+/* Imports */
 import React from "react";
 import { List, Heading } from "native-base";
 import { Image } from "react-native";
 
-const ProducerItem = ({ producer }) => {
+const ProducerItem = ({ producer, navigation }) => {
   return (
     <>
-      <List.Item onPress={() => alert("Hello")}>
+      <List.Item
+        onPress={() =>
+          navigation.navigate("ProducerDetail", { producer: producer })
+        }
+      >
         <Image
           source={{
             uri: producer.image,
           }}
-          style={{ width: 200, height: 200 }}
+          style={{ width: 100, height: 100 }}
         />
         <Heading>{producer.name}</Heading>
       </List.Item>
