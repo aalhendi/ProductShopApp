@@ -6,6 +6,7 @@ import { View } from "react-native";
 import ProductItem from "./ProductItem";
 /* State and Store */
 import productStore from "../../stores/productStore";
+import { observer } from "mobx-react-lite";
 
 const ProductList = ({ products }) => {
   if (productStore.loading) {
@@ -16,7 +17,6 @@ const ProductList = ({ products }) => {
     );
   }
 
-  console.log("Product List products, coming in as prop", products); //FIXME: Remove
   const productList = products.map((product) => (
     <ProductItem product={product} key={product.id} />
   ));
@@ -30,4 +30,4 @@ const ProductList = ({ products }) => {
   );
 };
 
-export default ProductList;
+export default observer(ProductList);

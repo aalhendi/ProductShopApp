@@ -12,7 +12,7 @@ import productStore from "../../stores/productStore";
 const ProducerDetail = ({ navigation, route }) => {
   const { producer } = route.params;
 
-  if (producerStore.loading || productStore.loading) {
+  if (producerStore.loading) {
     return (
       <>
         <Spinner />
@@ -20,15 +20,9 @@ const ProducerDetail = ({ navigation, route }) => {
     );
   }
 
-  // FIXME: ?
   const products = producer.products.map((product) =>
     productStore.getProductById(product.id)
   );
-  console.log(
-    "Product Store Products (ProducerDetail): ",
-    productStore.products
-  );
-  console.log("Producer Detail, Products", products);
 
   return (
     <>

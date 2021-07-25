@@ -26,7 +26,7 @@ export default RootNavigator = () => {
         name="Home"
         component={Home}
         options={{
-          headerShown: true, // FIXME: False
+          headerShown: false,
         }}
       />
       <Stack.Screen
@@ -40,7 +40,6 @@ export default RootNavigator = () => {
         name="ProducerDetail"
         component={ProducerDetail}
         options={({ route }) => {
-          console.log("Route from navigation", route.params.producer); // FIXME: remove
           const { producer } = route.params;
           return {
             title: producer.name,
