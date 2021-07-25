@@ -9,6 +9,9 @@ const Home = ({ navigation }) => {
       <Button onPress={() => navigation.navigate("ProducerList")} title="Next">
         Next
       </Button>
+      <Button onPress={() => navigation.navigate("CartList")} title="cart">
+        Cart
+      </Button>
     </>
   );
 };

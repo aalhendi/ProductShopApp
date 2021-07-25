@@ -6,6 +6,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../Home";
 import ProducerList from "../Producer/ProducerList";
 import ProducerDetail from "../Producer/ProducerDetail";
+import CartList from "../Cart/CartList";
+import CartButton from "../Cart/Buttons/CartButton";
 
 const Stack = createStackNavigator();
 export default RootNavigator = () => {
@@ -34,6 +36,7 @@ export default RootNavigator = () => {
         component={ProducerList}
         options={{
           title: "Select a Producer",
+          headerRight: () => <CartButton />,
         }}
       />
       <Stack.Screen
@@ -43,7 +46,15 @@ export default RootNavigator = () => {
           const { producer } = route.params;
           return {
             title: producer.name,
+            headerRight: () => <CartButton />,
           };
+        }}
+      />
+      <Stack.Screen
+        name="CartList"
+        component={CartList}
+        options={{
+          title: "Cart",
         }}
       />
     </Stack.Navigator>
