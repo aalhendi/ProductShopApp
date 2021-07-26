@@ -34,6 +34,27 @@ class CartStore {
     }
   };
 
+  deleteCartItem = async (productId) => {
+    this.cartItems = this.cartItems.filter(
+      (item) => item.productId !== productId
+    );
+    try {
+      await AsyncStorage.setItem("cart", JSON.stringify(this.cartItems));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  checkout = async () => {
+    alert("Checking out");
+    this.cartItems = [];
+    try {
+      await AsyncStorage.removeItem("cart");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   get totalQuantitiy() {
     let total = 0;
     this.cartItems.forEach((item) => (total += item.quantity));

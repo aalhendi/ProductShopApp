@@ -1,6 +1,6 @@
 /* Imports */
 import React from "react";
-import { List, Spinner } from "native-base";
+import { Button, List, Spinner, Text } from "native-base";
 /* Components */
 import CartItem from "./CartItem";
 /* State and Store */
@@ -26,6 +26,9 @@ const CartList = () => {
   return (
     <>
       <List>{cartList}</List>
+      <Button onPress={cartStore.checkout}>
+        <Text style={{ color: "white" }}>Checkout</Text>
+      </Button>
     </>
   );
 };
