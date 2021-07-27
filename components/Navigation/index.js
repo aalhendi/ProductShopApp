@@ -8,6 +8,8 @@ import ProducerList from "../Producer/ProducerList";
 import ProducerDetail from "../Producer/ProducerDetail";
 import CartList from "../Cart/CartList";
 import CartButton from "../Cart/Buttons/CartButton";
+import Login from "../authentication/Login";
+import Register from "../authentication/Register";
 
 const Stack = createStackNavigator();
 export default RootNavigator = () => {
@@ -55,6 +57,20 @@ export default RootNavigator = () => {
         component={CartList}
         options={{
           title: "Cart",
+        }}
+      />
+      <Stack.Screen
+        name="Login"
+        component={Login}
+        options={{
+          title: "Login",
+        }}
+      />
+      <Stack.Screen
+        name="Register"
+        component={Register}
+        options={{
+          title: "Register",
         }}
       />
     </Stack.Navigator>

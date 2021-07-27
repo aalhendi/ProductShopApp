@@ -1,17 +1,33 @@
 /* Imports */
 import React from "react";
-import { Button, Text } from "react-native";
+import { View, Heading, Button } from "native-base";
 
 const Home = ({ navigation }) => {
   return (
     <>
-      <Text>Hello</Text>
-      <Button onPress={() => navigation.navigate("ProducerList")} title="Next">
-        Next
-      </Button>
-      <Button onPress={() => navigation.navigate("CartList")} title="cart">
-        Cart
-      </Button>
+      <View style={{ flex: 1, alignItems: "center" }}>
+        <View
+          style={{
+            marginTop: "10%",
+            alignItems: "center",
+          }}
+        >
+          <Heading>Hello,</Heading>
+          <Heading>Welcome to the product shop</Heading>
+        </View>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-end",
+            marginVertical: "2%",
+            width: "90%",
+          }}
+        >
+          <Button onPress={() => navigation.navigate("ProducerList")}>
+            Next
+          </Button>
+        </View>
+      </View>
     </>
   );
 };

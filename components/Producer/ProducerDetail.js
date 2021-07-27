@@ -1,7 +1,7 @@
 /* Imports */
 import React from "react";
-import { Spinner, Text } from "native-base";
-import { View, Image } from "react-native";
+import { Heading, Spinner, Text } from "native-base";
+import { View, Image, ScrollView } from "react-native";
 /* Components */
 import ProductList from "../Product/ProductList";
 /* State and Store */
@@ -26,13 +26,16 @@ const ProducerDetail = ({ navigation, route }) => {
 
   return (
     <>
-      <View>
-        <Image source={{ uri: producer.image }} />
-        <Text>{producer.name}</Text>
-      </View>
-      <View>
+      <ScrollView>
+        <View style={{ alignItems: "center" }}>
+          <Heading>{producer.name}</Heading>
+          <Image
+            source={{ uri: producer.image }}
+            style={{ height: 100, width: 100 }}
+          />
+        </View>
         <ProductList products={products} />
-      </View>
+      </ScrollView>
     </>
   );
 };

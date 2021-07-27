@@ -26,7 +26,7 @@ const ProducerList = ({ navigation }) => {
 
   return (
     <>
-      <ScrollView>
+      <ScrollView style={{ height: "100%" }}>
         <List>{producerList}</List>
       </ScrollView>
     </>
